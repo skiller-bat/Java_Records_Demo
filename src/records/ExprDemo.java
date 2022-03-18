@@ -17,13 +17,16 @@ public class ExprDemo {
             );
 
         System.out.println(expr);
-        int result = eval(expr);
-        System.out.println(result);
+
+        int resultMethod = expr.eval();
+        System.out.println(resultMethod);
+
+        int resultFunction = eval(expr);
+        System.out.println(resultFunction);
     }
 
     static int eval(Expr expr) {
-        return
-            switch (expr) {
+        return switch (expr) {
 
                 case IntLiteral literal -> literal.value();
 
