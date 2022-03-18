@@ -38,12 +38,6 @@ public sealed interface Expr {
 
 
 
-// PlusExpr, TimesExpr, etc.? option, but no
-// op as Enum? YES!
-
-// make body non-empty? yes
-
-
 /*
 what do we get?
 - private final field & public accessor
