@@ -11,7 +11,12 @@ public sealed interface Expr {
         }
     }
 
-//    record Variable(String name) implements Expr {}   // yes! but problematic for eval!?
+    record Variable(String name) implements Expr {
+        @Override
+        public int eval() { // problematic
+            return 0;
+        }
+    }
 
     record UnaryExpr(UnaryOperator op, Expr expr) implements Expr {
         @Override

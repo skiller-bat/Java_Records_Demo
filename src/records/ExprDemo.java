@@ -6,19 +6,23 @@ public class ExprDemo {
 
     public static void main(String[] args) {
         // demonstrative figure needed
-        // 3 * (-4) = -12
-/*
+        // 3 * (-4) + x
         Expr expr =
-            new Expr.BinaryExpr(
-                BinaryOperator.TIMES,
-                new IntLiteral(3),
-                new UnaryExpr(
-                    UnaryOperator.MINUS,
-                    new IntLiteral(4)
-                )
+            new BinaryExpr(
+                BinaryOperator.PLUS,
+                new Expr.BinaryExpr(
+                    BinaryOperator.TIMES,
+                    new IntLiteral(3),
+                    new UnaryExpr(
+                        UnaryOperator.MINUS,
+                        new IntLiteral(4)
+                    )
+                ),
+                new Variable("x")
             );
-*/
 
+/*
+        // 6 + (-1) * (9/3) = 3
         Expr expr =
             new Expr.BinaryExpr(
                 BinaryOperator.PLUS,
@@ -36,7 +40,7 @@ public class ExprDemo {
                     )
                 )
             );
-
+*/
 
         System.out.println(expr);
 
@@ -64,6 +68,8 @@ public class ExprDemo {
                 case TIMES  -> eval(binary.left()) * eval(binary.right());
                 case DIVIDE -> eval(binary.left()) / eval(binary.right());
             };
+
+            default -> 0;   // only for Variable(); remove!
         };
     }
 }
