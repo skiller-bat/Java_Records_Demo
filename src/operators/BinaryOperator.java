@@ -1,4 +1,4 @@
-package records;
+package operators;
 
 public enum BinaryOperator {
     PLUS('+'), MINUS('-'), TIMES('*'), DIVIDE('/');

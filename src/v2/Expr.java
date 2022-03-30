@@ -1,4 +1,7 @@
-package records;
+package v2;
+
+import operators.BinaryOperator;
+import operators.UnaryOperator;
 
 public sealed interface Expr {
 
@@ -8,13 +11,6 @@ public sealed interface Expr {
         @Override
         public int eval() {
             return value;
-        }
-    }
-
-    record Variable(String name) implements Expr {
-        @Override
-        public int eval() { // problematic
-            return 0;
         }
     }
 
@@ -40,13 +36,3 @@ public sealed interface Expr {
         }
     }
 }
-
-
-
-/*
-what do we get?
-- private final field & public accessor
-- constructor
-- equals & hashcode
-- toString()
-*/

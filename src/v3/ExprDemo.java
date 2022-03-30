@@ -1,27 +1,13 @@
-package records;
+package v3;
 
-import static records.Expr.*;
+import operators.BinaryOperator;
+import operators.UnaryOperator;
+
+import static v3.Expr.*;
 
 public class ExprDemo {
 
     public static void main(String[] args) {
-        // demonstrative figure needed
-        // 3 * (-4) + x
-        Expr expr =
-            new BinaryExpr(
-                BinaryOperator.PLUS,
-                new Expr.BinaryExpr(
-                    BinaryOperator.TIMES,
-                    new IntLiteral(3),
-                    new UnaryExpr(
-                        UnaryOperator.MINUS,
-                        new IntLiteral(4)
-                    )
-                ),
-                new Variable("x")
-            );
-
-/*
         // 6 + (-1) * (9/3) = 3
         Expr expr =
             new Expr.BinaryExpr(
@@ -40,21 +26,16 @@ public class ExprDemo {
                     )
                 )
             );
-*/
 
         System.out.println(expr);
 
-        int resultMethod = expr.eval();
-        System.out.println(resultMethod);
-
-        int resultFunction = eval(expr);
-        System.out.println(resultFunction);
+        int result = eval(expr);
+        System.out.println(result);
     }
 
     static int eval(Expr expr) {
         return switch (expr) {
 
-// Patterns in switch are not supported at language level '17'
             case IntLiteral literal -> literal.value();
 
             case UnaryExpr unary -> switch (unary.op()) {
@@ -68,8 +49,6 @@ public class ExprDemo {
                 case TIMES  -> eval(binary.left()) * eval(binary.right());
                 case DIVIDE -> eval(binary.left()) / eval(binary.right());
             };
-
-            default -> 0;   // only for Variable(); remove!
         };
     }
 }
